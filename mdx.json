@@ -1,0 +1,295 @@
+{
+	// Place your snippets for mdx here. Each snippet is defined under a snippet name and has a prefix, body and 
+	// description. The prefix is what is used to trigger the snippet and the body will be expanded and inserted. Possible variables are:
+	// $1, $2 for tab stops, $0 for the final cursor position, and ${1:label}, ${2:another} for placeholders. Placeholders with the 
+	// same ids are connected.
+
+	"Tutorial Sub-Section": {
+		"prefix": ["tutorial-sub-section", "##"],
+		"body": [
+			"## $1",
+			"",
+			"1. ${2:Description of the steps taken}",
+			"",
+			"\t```shell-session",
+			"\t$ ${3:command and output}",
+			"\t```",
+			"\t![${3:Describe results} results](${5:img/path/to/image})",
+			"$0"
+		],
+		"description": "New tutorial section with tab stops."
+	},
+	"Tutorial step": {
+		"prefix": ["tutorial-step", "1"],
+		"body": [
+			"1. ${2:Description of the steps taken}",
+			"",
+			"\t```shell-session",
+			"\t$ ${3:command and output}",
+			"\t```",
+			"",
+			"\t![${3:Describe results} results](${5:img/path/to/image})",
+			"$0"
+		],
+		"description": "New tutorial step with image."
+	},
+   "Tutorial step without image from clipboard": {
+		"prefix": ["tutorial-step-without-image-from-clipboard","1"],
+		"body": [
+			"1. ${2:Description of the steps taken}",
+			"",
+			"\t```shell-session",
+			"\t$ $CLIPBOARD",
+			"\t```",
+			"$0"
+		],
+		"description": "New tutorial step without image."
+	},
+	"Code block": {
+		"prefix": ["code-block","```"],
+		"body": [
+			"```${1|shell-session,plain-text,hcl,json|}",
+			"$ $2",
+			"```",
+			"$0"
+		],
+		"description": "Simple shell session code block with tab stops."
+	},
+	"Code block including contents of clipboard": {
+		"prefix": ["code-block-from-clipboard","```"],
+		"body": [
+			"```${1|shell-session,plain-text,hcl,json|}",
+			"$ $CLIPBOARD",
+			"```",
+			"$0"
+		],
+		"description": "Code block from clipboard"
+	},
+	"Code block for env variable including contents of clipboard": {
+		"prefix": ["env-var-code-block-from-clipboard","```"],
+		"body": [
+			"```${1|shell-session,plain-text,hcl,json|}",
+			"$ export $CLIPBOARD=<<$0>>",
+			"```"
+		],
+		"description": "Code block for env variable from clipboard"
+	},
+	"Code block with hidden clipboard": {
+		"prefix": ["code-block-hide-clipboard-from-clipboard","```"],
+		"body": [
+			"<CodeBlockConfig hideClipboard>",
+			"",
+			"```${1|shell-session,plain-text,hcl,json|}",
+			"$CLIPBOARD $0",
+			"```",
+			"",
+			"</CodeBlockConfig>"
+		],
+		"description": "Code block without easy copy to clipboard, but contents are taken from active clipboard."
+	},
+   "Code block for output": {
+		"prefix": ["code-block-for-output-from-clipboard","```"],
+		"body": [
+         "**Example output:**",
+         "",
+			"<CodeBlockConfig hideClipboard>",
+         "",
+         "```${1|shell-session,plain-text,hcl,json|}",
+			"$CLIPBOARD",
+			"```",
+         "",
+			"</CodeBlockConfig>",
+			"$0"
+		],
+		"description": "Simple shell session code block"
+	},
+	"hyperlink from clipboard": {
+		"prefix": "link-from-clipboard",
+		"body": [
+        	"[$1](${CLIPBOARD/content//})",
+		],
+		"description": "Image link taken from the copy/paste clipboard"
+		},
+	"image link": {
+		"prefix": "image",
+		"body": [
+         "<ImageConfig hideBorder>",
+			"",
+         "![$1](${CLIPBOARD/public//})",
+         "",
+         "</ImageConfig>",
+		],
+		"description": "Image link without borders"
+	},
+	"tabs group": {
+		"prefix": "tabs-group",
+		"body": [
+			"<Tabs>",
+			"<Tab heading='$1' group='$1'>",
+			"",
+			"</Tab>",
+			"<Tab heading='$2' group='$2'>",
+			"",
+			"</Tab>",
+			"</Tabs>"
+		],
+		"description": "Simple tabs set up with tab stops."
+	},
+	"tab": {
+		"prefix": "tab",
+		"body": [
+			"<Tab heading=\"$1\" group=\"$1\">",
+			"",
+			"</Tab>",
+		],
+		"description": "Single tab with tab stop."
+	},
+	"bold from clipboard": {
+		"prefix":"bold-from-clipboard",
+		"body": ["**$CLIPBOARD**"],
+		"description":"Bold from clipboard buffer - used for UI elements"
+	},
+    "note-box": {
+		"prefix": "note-box",
+		"body": [
+			"<Note title='$1'>",
+			"",
+			"$2",
+			"",
+			"</Note>"
+		],
+		"description": "Note alert box with tab stops."
+	},
+    "Note from clipboard": {
+		"prefix": "note-box-from-clipboard",
+		"body": [
+			"<Note title='$1'>",
+         "",
+			"   $CLIPBOARD",
+         "",
+			"</Note>",
+			"$0"
+		],
+		"description": "Note from clipboard."
+	},
+    "Warning": {
+		"prefix": "warning-box-from-clipboard",
+		"body": [
+			"<Warning title='$1'>",
+         "",
+			"   $CLIPBOARD",
+         "",
+			"</Warning>",
+			"$0"
+		],
+		"description": "Warning box from clipboard."
+	},
+	"Warning-insecure-operation": {
+		"prefix":"warning-box-insecure-operation",
+		"body": [
+			"<Warning title='Insecure operation'>",
+			"",
+			"	${CLIPBOARD:Do not run an unsealed Vault in production with a single key share and a single key threshold. This approach is only used here to simplify the unsealing process for this demonstration.}",
+		    "",
+			"</Warning>"
+		],
+		"description": "Warning box for insecure operations."
+	},
+	"prerequisites-accordion": {
+		"prefix": "pre-req-accordion",
+		"body": [
+			"## Prerequisites",
+			"",
+			"- Recent version of Vault binary.  Please see [Supported Vault versions](/vault/docs/platform/k8s/vso#supported-vault-versions).",
+			"- [Docker](https://www.docker.com/products/docker-desktop/)",
+			"- [Helm CLI](https://github.com/helm/helm#install)",
+			"- [k9s](https://k9scli.io/)",
+			"- [Kubernetes command-line interface (CLI)](https://kubernetes.io/docs/tasks/tools/install-kubectl/)",
+			"- [Minikube](https://minikube.sigs.k8s.io/)",
+			"- Recent version of the Vault binary installed. Refer to the [Getting Started](/vault/tutorials/getting-started/getting-started-install) tutorial.",
+			"",
+			"### Install supporting tools",
+			"",
+			"This tutorial was last tested $CURRENT_DATE $CURRENT_MONTH_NAME $CURRENT_YEAR on a macOS 13.5.2 using the following software versions.",
+			"",
+			"<Accordion heading=\"Docker version\" collapse>",
+			"",
+			"<CodeBlockConfig highlight=\"4\">",
+			"",
+			"```shell-session",
+			"$ docker version",
+			"Client:",
+			"Cloud integration: v1.0.25",
+			"Version:           20.10.16",
+			"## ...",
+			"```",
+			"",
+			"</CodeBlockConfig>",
+			"",
+			"</Accordion>",
+			"",
+			"<Accordion heading=\"Helm version\" collapse>",
+			"",
+			"<CodeBlockConfig highlight=\"2\">",
+			"",
+			"```shell-session",
+			"$ helm version",
+			"version.BuildInfo{Version:"v3.12.0", GitCommit:\"c9f554d75773799f72ceef38c51210f1842a1dea\", GitTreeState:\"clean\", GoVersion:\"go1.20.4\"}",
+			"```",
+			"",
+			"</CodeBlockConfig>",
+			"",
+			"</Accordion>",
+			"",
+			"<Accordion heading=\"k9s version\" collapse>",
+			"",
+			"<CodeBlockConfig highlight=\"8\">",
+			"",
+			"```shell-session",
+			"$ k9s version",
+			"____  __.________",
+			"|    |/ _/   __   \______",
+			"|      < \____    /  ___/",
+			"|    |  \   /    /\___ \",
+			"|____|__ \ /____//____  >",
+			"	  \/            \/",
+			"",
+			"Version:    0.27.3",
+			"Commit:     7c76691c389e4e7de29516932a304f7029307c6d",
+			"Date:       n/a",
+			"```",
+			"",
+			"</CodeBlockConfig>",
+			"",
+			"</Accordion>",
+			"",
+			"<Accordion heading=\"Kubectl version\" collapse>",
+			"",
+			"<CodeBlockConfig highlight=\"2\">",
+			"",
+			"```plain-text",
+			"$ kubectl version --short",
+			"Client Version: v1.27.1",
+			"Kustomize Version: v5.0.1",
+			"Server Version: v1.26.3",
+			"```",
+			"</CodeBlockConfig>",
+			"",
+			"</Accordion>",
+			"",
+			"<Accordion heading=\"Minikube version\" collapse>",
+			"",
+			"<CodeBlockConfig highlight=\"2\">",
+			"",
+			"```shell-session",
+			"$ minikube version",
+			"minikube version: v1.30.1",
+			"commit: 08896fd1dc362c097c925146c4a0d0dac715ace0",
+			"```",
+			"",
+			"</CodeBlockConfig>",
+			"",
+			"</Accordion>"
+		]
+	}
+}

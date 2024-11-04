@@ -1,0 +1,48 @@
+{
+	// Place your snippets for markdown here. Each snippet is defined under a snippet name and has a prefix, body and 
+	// description. The prefix is what is used to trigger the snippet and the body will be expanded and inserted. Possible variables are:
+	// $1, $2 for tab stops, $0 for the final cursor position, and ${1:label}, ${2:another} for placeholders. Placeholders with the 
+	// same ids are connected.
+	// Example:
+   "Code block for output": {
+		"prefix": ["output-code-block-from-clipboard","```"],
+		"body": [
+         "**Example output:**",
+			"```bash,norun",
+			"$CLIPBOARD",
+			"```",
+		],
+		"description": "Simple shell session code block"
+	},
+	"runnable code block": {
+		"prefix": ["run-code-block-from-clipboard","```"],
+		"body": [
+			"```bash,run",
+			"$CLIPBOARD",
+			"```",
+		],
+		"description": "Simple shell session code block"
+	},
+	"new step with codeblock": {
+		"prefix": ["new-step-with-code-block","1."],
+		"body": [
+			"1. $1"
+			"```bash,run",
+			"$CLIPBOARD",
+			"```",
+		],
+		"description": "Simple shell session code block"
+	},
+	"Code block for output": {
+		 "prefix": ["code-block-for-output-from-clipboard","```"],
+		 "body": [
+		  "**Example output:**",
+		  "",
+		  "```${1|bash,plain-text|},norun,nocopy",
+			 "$CLIPBOARD",
+			 "```",
+			 "$0"
+		 ],
+		 "description": "Simple shell session code block"
+	 }
+}

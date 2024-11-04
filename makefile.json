@@ -1,0 +1,48 @@
+{
+	// Place your snippets for makefile here. Each snippet is defined under a snippet name and has a prefix, body and 
+	// description. The prefix is what is used to trigger the snippet and the body will be expanded and inserted. Possible variables are:
+	// $1, $2 for tab stops, $0 for the final cursor position, and ${1:label}, ${2:another} for placeholders. Placeholders with the 
+	// same ids are connected.
+	// Example:
+	// "Print to console": {
+	// 	"prefix": "log",
+	// 	"body": [
+	// 		"console.log('$1');",
+	// 		"$2"
+	// 	],
+	// 	"description": "Log output to console"
+	// }
+	"makefile header": {
+		"prefix": "header",
+		"body": [
+			"all: ",
+			"define header",
+			"\t$(info Running >>> $(1)$(END))",
+			"endef",
+			"",
+			"## list all targets",
+			".PHONY: no_targets__ list",
+			"no_targets__:",
+			"list:",
+				"sh -c \"\\$(MAKE) -p no_targets__ | awk -F':' '/^[a-zA-Z0-9][^$$#\/\\t=]*:([^=]|$$)/ {split($\\$1,A,/ /);for(i in A)print A[i]}' | grep -v '__$$' | sort\""
+		],
+		"description": "Makefile header"
+	},
+	"target template": {
+		"prefix": "target template",
+		"body": [
+			".PHONY: $1",
+			"$1:",
+			"\t$(call header,\\$@)",
+			"\t$CLIPBOARD"
+		],
+		"description": "Simple template for target"
+	},
+	"print target header": {
+		"prefix": "print target header",
+		"body": [
+			"$(call header,$@)",
+		],
+		"description": "print taret header"
+	}
+}

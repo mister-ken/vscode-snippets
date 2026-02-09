@@ -4,6 +4,25 @@
 	// $1, $2 for tab stops, $0 for the final cursor position, and ${1:label}, ${2:another} for placeholders. Placeholders with the 
 	// same ids are connected.
 	// Example:
+	"bash script template": {
+		"prefix": "template",
+		"isFileTemplate": true,
+		"body": [
+			"#!/bin/bash",
+			"## three finger claw utility functions",
+			"yell() { echo \"$0: $*\" >&2; }",
+			"die() { yell \"$*\"; exit 111; }",
+			"try() { \"$@\" || die \"cannot $*\"; }",
+			"",
+			"## functions",
+			"function()",
+			"{",
+			"\techo \"a function\"",
+			"}",
+			"",
+		],
+		"description": "create a python script template"
+	},
 	"Insert pause function": {
 		"prefix": "pause-function",
 		"body": [
@@ -25,7 +44,7 @@
 		"prefix": "heredoc",
 		"body": [
 			"cat <<-'EOF' > /myfile",
-			"put your commands here",
+			"$CLIPBOARD",
 			"EOF"
 		]
 	}

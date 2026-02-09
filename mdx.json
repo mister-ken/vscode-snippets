@@ -154,7 +154,7 @@
 		"body": [
 			"<Note title='$1'>",
 			"",
-			"$2",
+			"$CLIPBOARD",
 			"",
 			"</Note>"
 		],
@@ -267,7 +267,7 @@
 			"",
 			"<CodeBlockConfig highlight=\"2\">",
 			"",
-			"```plain-text",
+			"```shell-session",
 			"$ kubectl version --short",
 			"Client Version: v1.27.1",
 			"Kustomize Version: v5.0.1",

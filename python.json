@@ -12,6 +12,25 @@
 	// 	],
 	// 	"description": "Log output to console"
 	// } if __name__ == '__main__':
+	"python script template": {
+		"prefix": "template",
+		"isFileTemplate": true,
+		"body": [
+			"#!/usr/bin/env python3",
+			"## imports",
+			"import $1",
+			"",
+			"## functions",
+			"def my_function():",
+			"\tprint(\"a function\")",
+			"## main",
+			"if __name__ == '__main__':",
+			"\tprint(\"in main\")",
+			"\t$CLIPBOARD",
+			"",
+		],
+		"description": "create a python script template"
+	},
    	"Main function": {
 		"prefix": "main function",
 		"body": [
